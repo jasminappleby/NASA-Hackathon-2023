@@ -4,5 +4,5 @@ This code takes an image of the sun seen by Solar Orbiter, puts it into greyscal
 
 There is supposed to be a histogram that produces alongside this data set, but that is still in development. 
 
-The demo image is just a 17 nanometer sun image taken off of Google
+The demo image is just a 17 nanometer sun image taken off of Google:
 [Source](https://www.esa.int/ESA_Multimedia/Images/2022/03/The_Sun_in_high_resolution)
