@@ -5,6 +5,7 @@ import pandas as pd
 import io
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'static'  # This line sets the folder for serving static files.
 
 @app.route("/", methods=["GET", "POST"])
 def index():
