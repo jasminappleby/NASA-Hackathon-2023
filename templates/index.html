@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solar Orbiter Sun Image</title>
+    <link rel="shortcut icon" href="favicon.ico" type="☀️">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('galaxy.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+        /* .histogram-container {
+            width: 80%;
+        } */
+        .pixel-values-container {
+            width: 80%;
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Solar Orbiter Sun Image</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept=".jpg, .jpeg, .png">
+            <input type="submit" value="Upload Image">
+        </form>
+
+        <br>
+
+        {% if show_download %}
+        <!-- <div class="histogram-container">
+            <h2>Pixel Value Histogram:</h2>
+            <div>
+                <img src="{{ url_for('static', filename='histogram.png') }}" alt="Histogram">
+            </div>
+        </div> -->
+
+        <p>Download the below output from the button below:</p>
+
+        <a href="{{ url_for('download') }}" download="pixel_values.csv">
+            <button>Download CSV</button>
+        </a> 
+
+        <div class="pixel-values-container">
+            <h2>Pixel Values:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pixel Value</th>
+                        <th>Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for value in hist %}
+                    <tr>
+                        <td>{{ loop.index0 }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
