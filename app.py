@@ -15,7 +15,7 @@ def index():
 
         if uploaded_image:
             # Read the uploaded image using OpenCV
-            image_data = np.fromstring(uploaded_image.read(), np.uint8)
+            image_data = np.frombuffer(uploaded_image.read(), np.uint8)
             image = cv2.imdecode(image_data, cv2.IMREAD_COLOR)
 
             # Convert the image to grayscale
@@ -26,6 +26,7 @@ def index():
 
             # Flatten the histogram data for display
             hist_values = hist.flatten()
+            print(hist_values)
 
             # Create a Pandas DataFrame for the pixel values
             pixel_values = pd.DataFrame(data={'Pixel Value': np.arange(256), 'Frequency': hist_values})
