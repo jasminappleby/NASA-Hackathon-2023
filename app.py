@@ -26,7 +26,6 @@ def index():
 
             # Flatten the histogram data for display
             hist_values = hist.flatten()
-            print(hist_values)
 
             # Create a Pandas DataFrame for the pixel values
             pixel_values = pd.DataFrame(data={'Pixel Value': np.arange(256), 'Frequency': hist_values})
