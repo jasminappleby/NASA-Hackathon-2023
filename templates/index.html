@@ -2,14 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Solar Orbiter Sun Image</title>
-    <link rel="shortcut icon" href="favicon.ico" type="☀️"><link rel="shortcut icon" href="favicon.ico" type="☀️">    <style>
+    <title>Sonify Your Sun!</title>
+    <link rel="shortcut icon" href="favicon.ico" type="☀️"><link rel="shortcut icon" href="favicon.ico" type="☀️">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <style>
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background-size: cover;
             background-color: rgb(31, 31, 172);
+        }
+        h1 {
+            font-family: 'Righteous', cursive;
         }
         .container {
             display: flex;
@@ -55,12 +63,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>Solar Orbiter Sun Image</h1>
-
-        <form method="POST" enctype="multipart/form-data">
-            <input type="file" name="image" accept=".jpg, .jpeg, .png">
+        <h1 class="display-1">Sonify Your Sun! ☀️ </h1>
+        <p>Import an image of a solar image  of the sun below.</p>
+        <form method="POST" enctype="multipart/form-data" class="text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-9 text-center">
+                    <input type="file" name="image" accept=".jpg, .jpeg, .png">
+                </div>
+            </div>
+            <br>
             <input type="submit" value="Upload Image">
         </form>
+        <p>Accepted formats: png, jpeg, jpg</p>
 
         <br>
 
@@ -68,16 +82,16 @@
         <div class="histogram-container">
             <div class="histogram" style="height: {{ value }}px;">
                 <h2>Pixel Value Histogram:</h2>
-                <img src="{{ url_for('static', filename='histogram.png') }}" alt="Histogram of Pixel Values">
+                <img src="{{ url_for('static', filename='histogram.png') }}" alt="Histogram of Pixel Values" class="img-fluid">
             </div>
         </div>
 
-        <p>Download the below output from the button below:</p>
+        <p>Download a CSV file of the output here:</p>
 
         <a href="{{ url_for('download') }}" download="pixel_values.csv">
-            <button>Download CSV</button>
+            <input type="button" value="Download">
         </a> 
-
+        <br>
         <div class="pixel-values-container">
             <h2>Pixel Values:</h2>
             <table>
