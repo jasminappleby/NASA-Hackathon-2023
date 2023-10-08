@@ -9,6 +9,7 @@
             padding: 0;
             font-family: Arial, sans-serif;
             background-size: cover;
+            background-color: rgb(31, 31, 172);
         }
         .container {
             display: flex;
@@ -22,7 +23,14 @@
             max-width: 600px;
         }
         .histogram-container {
+            width: 100%; 
+            display: flex;
+            justify-content: center; 
+            padding: 20px 0; 
+        }
+        .histogram {
             width: 80%;
+            margin-top: 20px;
         }
         .pixel-values-container {
             width: 80%;
@@ -58,8 +66,8 @@
 
         {% if show_download %}
         <div class="histogram-container">
-            <h2>Pixel Value Histogram:</h2>
-            <div>
+            <div class="histogram" style="height: {{ value }}px;">
+                <h2>Pixel Value Histogram:</h2>
                 <img src="{{ url_for('static', filename='histogram.png') }}" alt="Histogram of Pixel Values">
             </div>
         </div>

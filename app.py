@@ -27,6 +27,12 @@ def index():
             # Flatten the histogram data for display
             hist_values = hist.flatten()
 
+            # Create a histogram plot using matplotlib (you need to import matplotlib)
+            import matplotlib.pyplot as plt
+            plt.hist(gray_image.ravel(), 256, [0, 256])
+            plt.savefig('static/histogram.png')  # Save the histogram as an image
+            plt.close()  # Close the matplotlib plot
+
             # Create a Pandas DataFrame for the pixel values
             pixel_values = pd.DataFrame(data={'Pixel Value': np.arange(256), 'Frequency': hist_values})
 
