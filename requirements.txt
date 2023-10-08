@@ -1,6 +1,6 @@
 anyio==3.0.0
 argon2-cffi==20.1.0
-argon2-cffi-bindings==20.1.0
+argon2-cffi-bindings==21.1.0
 arrow==1.2.3
 asttokens==2.4.0
 async-lru==2.0.4
